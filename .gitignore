@@ -164,4 +164,5 @@ pip-log.txt
 
 # CUSTOM
 .svn
+.idea
 localRes/

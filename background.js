@@ -26,15 +26,15 @@ function getItem(key) {
 // get IP using webRequest
 var currentIPList	= {};
 chrome.webRequest.onCompleted.addListener(
-  function(info) {
-	  currentIPList[ info.url ] = info.ip;
-	return;
-  },
-  {
-	urls: [],
-	types: []
-  },
-  []
+	function(info) {
+		currentIPList[ info.url ] = info.ip;
+		return;
+	},
+	{
+		urls: [],
+		types: []
+	},
+	[]
 );
 
 // Listeners
@@ -43,36 +43,36 @@ chrome.extension.onMessage.addListener(
 	{
 		switch (request.name)
 		{
-			
+
 			case "setOptions":
 				// request from the content script to set the options.
 				//localStorage["websiteIP_status"] = websiteIP_status;
 				localStorage.setItem("websiteIP_status", request.status);
-			break;
-			
+				break;
+
 			case "getOptions":
 				// request from the content script to get the options.
 				sendResponse({
 					enableDisableIP : localStorage["websiteIP_status"]
 				});
-			break;
-		
-		case "getIP":
-			var currentURL = sender.tab.url;
-			if (currentIPList[currentURL] !== undefined) {
-				sendResponse({
-					domainToIP: currentIPList[currentURL]
-				});
-			} else {
-				sendResponse({
-					domainToIP: null
-				});
-			}
-			
-		break;
-		
+				break;
+
+			case "getIP":
+				var currentURL = sender.tab.url;
+				if (currentIPList[currentURL] !== undefined) {
+					sendResponse({
+						domainToIP: currentIPList[currentURL]
+					});
+				} else {
+					sendResponse({
+						domainToIP: null
+					});
+				}
+
+				break;
+
 			default:
-			sendResponse({});
+				sendResponse({});
 		}
 	}
 );
