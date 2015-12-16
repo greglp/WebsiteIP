@@ -9,7 +9,10 @@ Does it Dental IP Finder locate and display the IP Address of a non-dental site?
 
 Yes.
 
-Original Author
+How can I run it?
 =========
 
-More available here: http://tinybigideas.com/browser-extensions/website-ip/
+Download the files from Git Hub. <br>
+Visit chrome://extensions and select Developer Mode <br>
+Use file explorer to find the path of these files on your computer <br>
+Explore
